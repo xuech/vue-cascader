@@ -1,8 +1,9 @@
 <template>
   <div class="cascader" v-click-outside="close">
-    <div class="title" @click="toggle">123</div>
+    <div class="title" @click="toggle">{{result}}</div>
     <div v-if="isVisible">
-      <cascader-item  :options=options></cascader-item>
+      <cascader-item  :options=options :value="value"
+      :level=level @change="change"></cascader-item>
     </div>
   </div>
 </template>
@@ -32,26 +33,29 @@ export default {
     CascaderItem,
   },
   props: {
+    value: {
+      type: Array,
+      default: () => [],
+    },
     options: {
       type: Array,
       default: () => [],
     },
   },
+  computed: {
+    result() {
+      return this.value.map((item) => item.label).join('/');
+    },
+  },
   data() {
     return {
+      level: 0,
       isVisible: false,
-      currentItem: '',
     };
   },
-  computed: {
-    lists() {
-      return this.currentItem && this.currentItem.children;
-    },
-
-  },
   methods: {
-    selectedItem(item) {
-      this.currentItem = item;
+    change(value) {
+      this.$emit('input', value);
     },
     close() {
       this.isVisible = false;
