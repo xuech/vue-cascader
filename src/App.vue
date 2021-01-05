@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import Cascader from './components/Cascader.vue';
 
 export default {
@@ -20,10 +20,21 @@ export default {
     };
   },
   created() {
-    axios.get('http://114.215.182.183:3000/api/foods').then((res) => {
-      console.log(res);
-      this.options = res.data;
-    });
+    // axios.get('http://114.215.182.183:3000/api/foods').then((res) => {
+    //   console.log(res);
+    //   this.options = res.data;
+    // });
+    this.options = [
+      {
+        label: '水果',
+        value: [
+          {
+            label: '苹果',
+          },
+        ],
+
+      },
+    ];
   },
 };
 </script>
