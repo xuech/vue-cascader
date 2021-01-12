@@ -55,7 +55,7 @@ export default {
 
       const cloneItem = JSON.parse(JSON.stringify(this.value));
       cloneItem[this.level] = item;
-      console.log('cloneItem', cloneItem);
+      // console.log('cloneItem', cloneItem);
       cloneItem.splice(this.level + 1);
       this.$emit('change', cloneItem);
     },
