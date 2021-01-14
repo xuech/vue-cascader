@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div>菜单</div>
     <cascader :options=options  v-model="value"></cascader>
   </div>
 </template>
