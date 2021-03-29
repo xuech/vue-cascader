@@ -21,7 +21,7 @@ export default {
     };
   },
   created() {
-    axios.get('http://114.215.182.183:3000/api/foods').then((res) => {
+    axios.get('http://114.215.182.183:3001/api/foods').then((res) => {
       // console.log(res);
       this.options = res.data;
     });
